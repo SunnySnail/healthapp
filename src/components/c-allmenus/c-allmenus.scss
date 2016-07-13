@@ -1,0 +1,40 @@
+@import '../../sass/_common.scss';
+.c-allmenus{
+    font-size: 1.4rem;
+    margin: 24px 8px;
+    .all-menus-title{
+        background: url(./images/menu.png) no-repeat top left;
+        background-size: 1.7rem;
+        font-size: 1.6rem;
+        text-indent: 2rem;
+        padding-bottom: 8px;
+        border-bottom: 1px solid $base-bg;
+    }
+    .all-menus-pic{
+        width: 100%;
+    }
+    .menu-item{
+        float: left;
+        @include box-sizing();
+        width: 23%;
+        margin: 8px 1%;
+        .menu-item-pic{
+            width: 100%;
+            padding-top: 100%;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: cover;
+        }
+        .menu-item-info{
+            text-align: center;
+            .menu-item-title{
+                font-size: 1.4rem;
+                margin: 2% 0;
+            }
+            .menu-item-desc{
+                font-size: 1rem;
+                color: $base-font;
+            }
+        }
+    }
+}

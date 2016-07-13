@@ -1,0 +1,3 @@
+<template>
+    <csearch></csearch>
+</template>

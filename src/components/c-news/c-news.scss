@@ -1,0 +1,41 @@
+@import '../../sass/_common.scss';
+.c-news{
+    font-size: 1.4rem;
+    margin: 24px 8px;
+    .hot-news-title{
+        background: url(./images/menu.png) no-repeat top left;
+        background-size: 1.7rem;
+        font-size: 1.6rem;
+        text-indent: 2rem;
+        padding-bottom: 8px;
+        border-bottom: 1px solid $base-bg;
+    }
+    .hot-news-item{
+        width: 100%;
+        padding: 4px 0;
+        border-bottom: 1px solid $base-bg;
+        overflow: hidden;
+        .pic{
+            width: 16%;
+            padding-top: 16%;
+            overflow: hidden;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center center;
+            float: left;
+        }
+        .news-desc{
+            float: left;
+            margin-left: 3%;
+            margin-top: 3%;
+            .item-title{
+                font-size: 1.5rem;
+            }
+            .item-desc{
+                font-size: 1.2rem;
+                color: $base-font;
+                margin-top: 4%;
+            }
+        }
+    }
+}

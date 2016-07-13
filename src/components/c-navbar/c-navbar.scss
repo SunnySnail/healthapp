@@ -1,0 +1,62 @@
+@import '../../sass/_common.scss';
+$base : #eee;
+$base-font: #8a8a8a;
+$base-border: #ddd;
+$base-bg: #fff;
+.c-navbar{
+    width: 100%;
+    padding-top: 12%;
+    background-color: $base-bg;
+    border-bottom: 1px solid $base-border;
+    position: relative;
+    .navbar-con{
+        width: 100%;
+        height: 100%;
+        @include verticalMiddle();
+    }
+    .nav-menu{
+        background: url(./images/caidan.png) no-repeat center center;
+        background-size: 100% 100%;
+        width: 8%;
+        padding-top: 8%;
+        @include verticalMiddle();
+        left: 8px;
+    }
+    .nav-search{
+        @include middle();
+        width: 56%;
+        padding-top: 8%;
+        .icon-search{
+            display: inline-block;
+            background: url(./images/search.png) no-repeat center center;
+            width: 10%;
+            padding-top: 10%;
+            @include verticalMiddle();
+            left: 5%;
+            z-index: 1;
+            background-size: 100% auto;
+        }
+        .nav-input{
+            background-color: $base;
+            @include middle();
+            @include border-radius(30px);
+            width: 100%;
+            height: 100%;
+            border: 1px solid $base-border;
+            span{
+                @include verticalMiddle();
+                left: 17%;
+                color: $base-font;
+                font-size: 1.2rem;
+            }
+        }
+    }
+    .nav-login{
+        background: url(./images/user.png) no-repeat center center;
+        background-size: 100% 100%;
+        width: 8%;
+        padding-top: 8%;
+        @include verticalMiddle();
+        right: 8px;
+    }
+}
