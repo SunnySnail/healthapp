@@ -8,7 +8,7 @@
                     <div class="nav-input"><span>搜索食材、菜谱</span></div>
                 </a>
             </div>
-            <div class="nav-login"></div>
+            <div class="nav-login" v-link="'/login'"></div>
         </div>
     </div>
 </template>

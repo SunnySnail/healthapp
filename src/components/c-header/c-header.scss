@@ -1,0 +1,25 @@
+@import '../../sass/_common.scss';
+.c-header{
+    width: 100%;
+    padding-top: 12%;
+    position: relative;
+    border-bottom: 1px solid $base-bg;
+    .back{
+        background: url(./images/back-icon.png) no-repeat center;
+        width: 8%;
+        padding-top: 8%;
+        background-size: auto 100%;
+        left: 0;
+        @include verticalMiddle();
+    }
+    p.header-name{
+        @include middle();
+        font-size: 1.6rem;
+    }
+    p.right-con{
+        @include verticalMiddle();
+        right: 2%;
+        font-size: 1.4rem;
+        color: #999;
+    }
+}

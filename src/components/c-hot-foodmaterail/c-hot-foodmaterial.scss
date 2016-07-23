@@ -1,8 +1,8 @@
 @import '../../sass/_common.scss';
-.c-allmenus{
+.c-hot-foodmaterial{
     font-size: 1.4rem;
     margin: 24px 8px;
-    .all-menus-title{
+    .hot-foodmaterial-title{
         background: url(./images/menu.png) no-repeat top left;
         background-size: 1.7rem;
         font-size: 1.6rem;
@@ -10,52 +10,41 @@
         padding-bottom: 8px;
         border-bottom: 1px solid $base-bg;
     }
-    .all-menus-pic{
+    .hot-foodmaterial-con{
         width: 100%;
         overflow: hidden;
+        margin-top: 0.8rem;
     }
-    .menu-item{
+    ul{
+        overflow: hidden;
+        width: 100%;
+    }
+    .hot-foodmaterial-item{
         float: left;
         @include box-sizing();
-        width: 23%;
-        margin: 8px 1%;
-        .menu-item-pic{
+        width: 20%;
+        margin: 0 2.5%;
+        height: 9rem;
+        .hot-foodmaterial-item-pic{
             width: 100%;
             padding-top: 100%;
             background-repeat: no-repeat;
             background-position: center center;
             background-size: cover;
         }
-        .menu-item-info{
+        .hot-foodmaterial-item-info{
             text-align: center;
-            .menu-item-title{
-                font-size: 1.4rem;
+            .hot-foodmaterial-item-title{
+                font-size: 1.2rem;
                 margin: 2% 0;
             }
-            .menu-item-desc{
+            .hot-foodmaterial-item-desc{
                 font-size: 1rem;
                 color: $base-font;
             }
         }
     }
-    .all-menus-catalogue{
-        width: 100%;
-        overflow: hidden;
-        ul{
-            overflow: hidden;
-        }
-    }
-    .catalogue-item{
-        float: left;
-        width: 28%;
-        border: 1px solid $base-border;
-        @include border-radius(20px);
-        margin: 0.5rem 2%;
-        font-size: 1.4rem;
-        text-align: center;
-        padding: 0.5rem 0;
-    }
-    .check-all-catalogue{
+    .check-all-foodmaterial-catalogue{
         width: 50%;
         margin: 1rem auto;
         text-align: center;

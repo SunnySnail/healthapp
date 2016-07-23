@@ -5,6 +5,8 @@ $font-arial:"Arial";
 $base:#333;
 $base-bg: #f0f0f0;
 $base-font: #928f8f;
+$base-border: #ddd;
+$base-red: #d81515;
 
 // section style start
 $border-gray: #e3e3e3;
@@ -27,6 +29,12 @@ body{
   top: 50%;
   left: 50%;
   @include transform(translate(-50%,-50%));
+}
+
+@mixin horizonMiddle(){
+  position: absolute;
+  left: 50%;
+  @include transform(translateX(-50%));
 }
 
 

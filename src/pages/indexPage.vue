@@ -4,4 +4,5 @@
     <chotfood></chotfood>
     <!-- <cnews></cnews> -->
     <callmenus></callmenus>
+    <chotfoodmaterial></chotfoodmaterial>
 </template>

@@ -28,6 +28,6 @@ a:hover{outline: none;text-decoration:underline;}
   -webkit-appearance: none;
 }
 
-html{font-size:9px;-webkit-text-size-adjust:none;}
+html{font-size:8px;-webkit-text-size-adjust:none;}
 @media screen and (min-width:321px){html{font-size:10px}};
 

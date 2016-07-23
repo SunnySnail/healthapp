@@ -1,0 +1,119 @@
+@import '../../sass/_common.scss';
+.c-foodrecipe-introduce{
+    width: 100%;
+    position: relative;
+    .pic{
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+        width: 100%;
+        padding-top: 90%;
+    }
+    .food-name{
+        text-align: center;
+        font-size: 2rem;
+        margin: 2% 0 ;
+    }
+    .tags-con{
+        text-align: center;
+        .tag{
+            display: inline-block;
+            color: $base-font;
+            margin: 0.2rem;
+            font-size: 1.2rem;
+            padding: 0.2rem 0.4rem;
+            @include border-radius(5px);
+            border: 1px solid $base-bg;
+        }
+    }
+    .food-info{
+        overflow: hidden;
+        width: 60%;
+        margin: 4% auto;
+        .detail-info{
+            float: left;
+            text-align: center;
+            background-repeat: no-repeat;
+            background-position: center top;
+            padding-top: 10%;
+            font-size: 1.2rem;
+        }
+        .taste-info{
+            width: 24%;
+            background-image: url('./images/taste.png');
+            background-size: 35% auto;
+        }
+        .method-info{
+            width: 24%;
+            background-image: url('./images/method.png');
+            background-size: 35% auto;
+        }
+        .difficulty-info{
+            width: 25.5%;
+            background-image: url('./images/difficult.png');
+            background-size: 30% auto;
+        }
+        .cook-time-info{
+            width: 25.5%;
+            background-image: url('./images/time.png');
+            background-size: 30% auto;
+        }
+    }
+    .food-material-con{
+        font-size: 1.4rem;
+        margin: 24px 8px;
+        @include box-sizing();
+        .con-title{
+            background: url(./images/menu.png) no-repeat top left;
+            background-size: 1.7rem;
+            font-size: 1.4rem;
+            text-indent: 2rem;
+            padding-bottom: 8px;
+            border-bottom: 1px solid $base-bg;
+        }
+        ul{
+            li{
+                padding: 1rem;
+                border-bottom: 1px solid $base-bg;
+                position: relative;
+            }
+            .arrow:after{
+                content: "";
+                @include verticalMiddle();
+                right: 0;
+                color: $base-font;
+                background: url('./images/arrow.png') no-repeat center center;
+                background-size: cover;
+                width: 5%;
+                padding-top: 5%;
+            }
+        }
+    }
+    .food-steps{
+        font-size: 1.4rem;
+        margin: 24px 8px;
+        @include box-sizing();
+        .con-title{
+            background: url(./images/menu.png) no-repeat top left;
+            background-size: 1.7rem;
+            font-size: 1.4rem;
+            text-indent: 2rem;
+            padding-bottom: 8px;
+            border-bottom: 1px solid $base-bg;
+        }
+        li{
+            margin: 5%;
+            font-size: 1.2rem;
+        }
+        .step-desc{
+
+        }
+        .step-pic{
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center center;
+            width: 100%;
+            padding-top: 100%;
+        }
+    }
+}

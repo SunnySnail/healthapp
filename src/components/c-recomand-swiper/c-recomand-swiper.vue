@@ -8,7 +8,8 @@
             :pagination-clickable="true"
             :slide-els-len=num>
             <div class='slider' v-for="item in foodList">
-                <div class="slider-pic" :style="{backgroundImage:'url(/images/'+item.image_hash+'.jpg)'}" alt="">
+                <div class="slider-pic bg-box" v-lazy:background-image="'/images/'+item.image_hash+'.jpg'"
+                    data-hash={{item.hash}} v-link="'/foodrecipe/'+item.hash"></div>
             </div>
         </swiper>
     </div>

@@ -48,7 +48,7 @@ module.exports = {
     extensions: ['', '.js', '.json', '.scss'],
     alias: {
       Console : 'js/console.js',
-      Jquery:'js/jquery-1.8.0.min.js'
+      // Jquery:'js/jquery-1.8.0.min.js'
     }
   },
   //dev-serve

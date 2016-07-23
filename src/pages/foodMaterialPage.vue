@@ -1,0 +1,3 @@
+<template>
+    <cfoodmaterialintroduce></cfoodmaterialintroduce>
+</template>

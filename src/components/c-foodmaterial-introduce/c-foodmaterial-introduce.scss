@@ -1,0 +1,49 @@
+@import '../../sass/_common.scss';
+.c-foodmaterial-introduce{
+    width: 100%;
+    position: relative;
+    .pic{
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+        width: 100%;
+        padding-top: 90%;
+    }
+    .food-name{
+        text-align: center;
+        font-size: 2rem;
+        margin: 2% 0 ;
+    }
+    .tags-con{
+        text-align: center;
+        .tag{
+            display: inline-block;
+            color: $base-font;
+            margin: 0.2rem;
+            font-size: 1.2rem;
+            padding: 0.2rem 0.4rem;
+            @include border-radius(5px);
+            border: 1px solid $base-bg;
+        }
+    }
+    .material-info{
+        margin: 5% 0;
+        padding: 5% 3%;
+        @include box-sizing();
+        font-size: 1.2rem;
+        .info-name{
+            text-align: center;
+            font-size: 1.4rem;
+            margin-bottom: 5%;
+        }
+        .info-con{
+            line-height: 1.8rem;
+        }
+        &:nth-child(odd){
+            background-color: $base-bg;
+        }
+        &:last-of-type{
+            margin-bottom: 0;
+        }
+    }
+}
