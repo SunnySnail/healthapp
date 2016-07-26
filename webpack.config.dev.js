@@ -2,27 +2,20 @@ var webpack = require('webpack');
 var path = require('path');
 var fs = require('fs');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
-var publicPath = 'http://ilive.icampus.us/';
-var AssetsPlugin = require('assets-webpack-plugin');
+var publicPath = '/';
 
 module.exports = {
   //插件项
   plugins: [
+    new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
-    new ExtractTextPlugin("css/[name].css"),
+    new ExtractTextPlugin("[name].css"),
     new webpack.ResolverPlugin(
         new webpack.ResolverPlugin.DirectoryDescriptionFilePlugin("bower.json", ["main"])
     ),
-    new webpack.optimize.CommonsChunkPlugin('js/common.js'),
-    // new new AssetsPlugin(),
-    // function(){
-    //   this.plugin("done", function(stats) {
-    //   require("fs").writeFileSync(
-    //     path.join(__dirname, "..", "stats.json"),
-    //     JSON.stringify(stats.toJson()));
-    //   })
-    // }
+    new webpack.optimize.CommonsChunkPlugin('js/common.js')
   ],
+  devtool: 'source-map',
   //页面入口文件配置
   entry: getEntry(),
   //入口文件输出配置
@@ -51,11 +44,24 @@ module.exports = {
   },
   //其它解决方案配置
   resolve: {
-    root: '', //绝对路径
+    root: 'E:/Project Files/commons', //绝对路径
     extensions: ['', '.js', '.json', '.scss'],
     alias: {
       Console : 'js/console.js',
+      // Jquery:'js/jquery-1.8.0.min.js'
     }
+  },
+  //dev-serve
+  devServer: {
+    contentBase: "./src",
+    publicPath: publicPath,
+    noInfo: true, //  --no-info option
+    hot: true,
+    inline: true,
+    colors: true,
+    host: '127.0.0.1',
+    port: 7788,
+    historyApiFallback: true
   }
 };
 

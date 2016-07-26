@@ -1,0 +1,3 @@
+<template>
+    <cregister></cregister>
+</template>

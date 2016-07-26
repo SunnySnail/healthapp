@@ -1,3 +1,5 @@
+import '../html/index.html'
+
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import indexPage from '../pages/indexPage.vue'

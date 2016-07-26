@@ -1,6 +1,6 @@
 @import '../../sass/_common.scss';
-.c-login{
-    .login-tips{
+.c-register{
+    .register-tips{
         text-align: center;
         color: $base-font;
         margin: 2% 0;
@@ -20,8 +20,13 @@
         background-size: 1.6rem auto;
         text-indent: 2rem;
     }
-    .password{
+    .password,.confirm-password{
         background: url(./images/password.png) no-repeat left center;
+        background-size: 1.6rem auto;
+        text-indent: 2rem;
+    }
+    .email{
+        background: url(./images/email.png) no-repeat left center;
         background-size: 1.6rem auto;
         text-indent: 2rem;
     }
@@ -40,4 +45,5 @@
         @include border-radius(10px);
         z-index: 2;
     }
+
 }

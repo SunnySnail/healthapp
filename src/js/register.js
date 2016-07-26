@@ -15,6 +15,7 @@ import CfoodRecipeIntroduce from '../components/c-foodrecipe-introduce/c-foodrec
 import Cheader from '../components/c-header/c-header.vue'
 import CfoodMaterialIntroduce from "../components/c-foodmaterial-introduce/c-foodmaterial-introduce.vue"
 import Clogin from '../components/c-login/c-login.vue'
+import Cregister from '../components/c-register/c-register.vue'
 
 Vue.config.debug = true;
 Vue.use(vueResource);
@@ -36,5 +37,6 @@ Vue.component('cfoodrecipeintroduce', CfoodRecipeIntroduce);
 Vue.component('cheader', Cheader);
 Vue.component('cfoodmaterialintroduce', CfoodMaterialIntroduce);
 Vue.component('clogin', Clogin);
+Vue.component('cregister', Cregister);
 
 
