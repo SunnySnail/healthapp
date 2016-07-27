@@ -1,0 +1,3 @@
+<template>
+    <cuser></cuser>
+</template>
