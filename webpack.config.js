@@ -8,20 +8,13 @@ var AssetsPlugin = require('assets-webpack-plugin');
 module.exports = {
   //插件项
   plugins: [
-    new webpack.NoErrorsPlugin(),
     new ExtractTextPlugin("css/[name].css"),
-    new webpack.ResolverPlugin(
-        new webpack.ResolverPlugin.DirectoryDescriptionFilePlugin("bower.json", ["main"])
-    ),
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false
+      }
+    }),
     new webpack.optimize.CommonsChunkPlugin('js/common.js'),
-    // new new AssetsPlugin(),
-    // function(){
-    //   this.plugin("done", function(stats) {
-    //   require("fs").writeFileSync(
-    //     path.join(__dirname, "..", "stats.json"),
-    //     JSON.stringify(stats.toJson()));
-    //   })
-    // }
   ],
   //页面入口文件配置
   entry: getEntry(),

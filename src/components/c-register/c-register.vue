@@ -14,8 +14,12 @@
     </div>
 </template>
 <script>
-    import Vue from 'vue';
-    import './c-register.scss';
+    import Vue from 'vue'
+    import VueRouter from 'vue-router'
+
+    Vue.use(VueRouter);
+    var router = new VueRouter();
+    import './c-register.scss'
     export default{
         data() {
             return {
@@ -23,16 +27,35 @@
                 password: null,
                 confirmPassword: null,
                 email: null,
-                notBlank: false
+                notBlank: false,
+                notSamePassword: false,
+                notHasUser: false,
+                notHasEmail: false,
+                validEmail: false,
             }
         },
         methods: {
             submit: function(){
-                if(!this.notBlank){
-                    var tips = this.checkIsBlank();
-                    this.showTips(tips);
+                var tips1 = this.checkIsBlank();
+                if(tips1){
+                    this.showTips(tips1);
+                    return;
                 }
-                if(this.notBlank){
+                var tips2 = this.checkSamePassword();
+                if(tips2){
+                    this.showTips(tips2);
+                    return;
+                }
+                var tips3 = this.checkIsValidEmail();
+                if(tips3){
+                    this.showTips(tips3);
+                    return;
+                }
+                this.checkHasUser();
+                this.checkHasEmail();
+            },
+            register: function(){
+                if(this.notBlank && this.notHasUser && this.notHasEmail && this.notSamePassword && this.validEmail){
                     Vue.http.headers.common['X-XSRF-TOKEN'] = document.querySelector('#token').getAttribute('value');
                     this.$http.post('/api/user',
                         {
@@ -41,6 +64,7 @@
                             email: this.email,
                         }).then((response)=>{
                             alert("success");
+                            router.go('/index');
                         }, (response)=>{
                     })
                 }
@@ -61,19 +85,52 @@
                     {
                         username:this.username
                     }).then((response)=>{
-                        console.log(response.data);
                         if(response.data.status){
-                            return true;
+                            this.notHasUser = true;
+                            this.register();
                         }else{
-                            return "用户名已被注册";
+                            this.showTips("用户名已被注册");
                         }
                     }, (response)=>{
                 })
             },
+            checkHasEmail: function(){
+                Vue.http.headers.common['X-XSRF-TOKEN'] = document.querySelector('#token').getAttribute('value');
+                this.$http.post('/api/user/validity',
+                    {
+                        email:this.email
+                    }).then((response)=>{
+                        if(response.data.status){
+                            this.notHasEmail = true;
+                            this.register();
+                        }else{
+                             this.showTips("邮箱已被注册");
+                        }
+                    }, (response)=>{
+                })
+            },
+            checkSamePassword: function(){
+                if(this.password !== this.confirmPassword) return "密码和确认密码不一致";
+                else this.notSamePassword = true;
+            },
+            checkIsValidEmail: function(){
+                let reg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/;
+                if(reg.test(this.email)){
+                    this.validEmail = true;
+                }else{
+                    return '邮箱不是有效邮箱';
+                }
+            },
             showTips: function(tips){
-                var $tips = document.querySelector('.tips'),
-                    text = document.createTextNode(tips);
-                $tips.appendChild(text);
+                if(tips){
+                    let $tips = $('.tips');
+                    $tips.text(tips).addClass('show');
+                    setTimeout(function(){
+                        $tips.removeClass('show');
+                    },1000);
+                }else{
+                    return;
+                }
             }
         }
     }

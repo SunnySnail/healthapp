@@ -13,17 +13,32 @@
 </template>
 <script>
     import Vue from 'vue';
-    import './c-login.scss';
+    import VueRouter from 'vue-router'
+    import './c-login.scss'
+
+    Vue.use(VueRouter);
+    var router = new VueRouter();
+
     export default{
         data() {
             return {
                 username: null,
-                password: null
+                password: null,
+                notBlank: null
             }
         },
         methods: {
             submit: function(){
-                alert("submit");
+                var tips = this.checkIsBlank();
+                if(tips){
+                    this.showTips(tips);
+                    return;
+                }
+                if(this.notBlank){
+                    this.login();
+                }
+            },
+            login: function(){
                 Vue.http.headers.common['X-XSRF-TOKEN'] = document.querySelector('#token').getAttribute('value');
                 this.$http.post('/api/user/login',
                     {
@@ -31,13 +46,32 @@
                         password: this.password
                     })
                 .then((response)=>{
-                    alert("success");
+                    if(response.data.status){
+                        router.go('/index');
+                    }else{
+                        this.showTips(response.data.reason);
+                    }
                 }, (response)=>{
-                    alert("error");
                 })
+            },
+            checkIsBlank: function(){
+                if(this.username == null) return '用户名不能为空';
+                if(this.password == null) return '密码不能为空';
+                else this.notBlank = true;
             },
             csrf_token: function(){
                 return decodeURIComponent(document.cookie.split('XSRF-TOKEN=')[1]);
+            },
+            showTips: function(tips){
+                if(tips){
+                    let $tips = $('.tips');
+                    $tips.text(tips).addClass('show');
+                    setTimeout(function(){
+                        $tips.removeClass('show');
+                    },1000);
+                }else{
+                    return;
+                }
             }
         }
     }

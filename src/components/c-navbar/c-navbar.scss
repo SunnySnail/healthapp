@@ -51,12 +51,17 @@ $base-bg: #fff;
             }
         }
     }
-    .nav-login{
+    .nav-login,.nav-user{
         background: url(./images/user.png) no-repeat center center;
         background-size: 100% 100%;
         width: 8%;
         padding-top: 8%;
         @include verticalMiddle();
         right: 8px;
+    }
+    .nav-user{
+        @include border-radius(50%);
+        width: 10%;
+        padding-top: 10%;
     }
 }

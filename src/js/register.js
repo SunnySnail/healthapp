@@ -1,5 +1,6 @@
-// 注册全局组件
 import Vue from 'vue'
+
+// 注册全局组件
 import vueResource from 'vue-resource'
 import Swiper from '../components/c-swiper/vue-swiper.vue'
 import lazyload from 'vue-lazyload'
@@ -17,7 +18,6 @@ import CfoodMaterialIntroduce from "../components/c-foodmaterial-introduce/c-foo
 import Clogin from '../components/c-login/c-login.vue'
 import Cregister from '../components/c-register/c-register.vue'
 
-Vue.config.debug = true;
 Vue.use(vueResource);
 Vue.use(lazyload, {
     // error: '../images/error.png',
@@ -38,5 +38,3 @@ Vue.component('cheader', Cheader);
 Vue.component('cfoodmaterialintroduce', CfoodMaterialIntroduce);
 Vue.component('clogin', Clogin);
 Vue.component('cregister', Cregister);
-
-
