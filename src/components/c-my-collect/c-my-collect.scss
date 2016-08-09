@@ -1,0 +1,55 @@
+@import '../../sass/_common.scss';
+.c-my-collect{
+    font-size: 1.4rem;
+    .my-collect-tab{
+        width: 100%;
+        background-color: $base-bg;
+        span{
+            display: inline-block;
+            width: 49%;
+            text-align: center;
+            @include box-sizing();
+            padding: 4% 0;
+            color: #000;
+            &.active{
+                background-color: $base-red;
+                color: #fff;
+            }
+        }
+    }
+    .my-collect-con{
+        margin: 0 8px;
+    }
+    .my-collect-item{
+        width: 100%;
+        padding: 4px 0;
+        border-bottom: 1px solid $base-bg;
+        overflow: hidden;
+        .pic{
+            width: 16%;
+            padding-top: 16%;
+            overflow: hidden;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center center;
+            float: left;
+        }
+        .food-desc{
+            float: left;
+            margin-left: 3%;
+            margin-top: 3%;
+            .item-title{
+                font-size: 1.5rem;
+            }
+            .item-desc{
+                font-size: 1.2rem;
+                color: $base-font;
+                margin-top: 4%;
+            }
+        }
+    }
+    .item-transition {
+        /* applied to the element when moving */
+      transition: transform .5s cubic-bezier(.55,0,.1,1);
+    }
+}

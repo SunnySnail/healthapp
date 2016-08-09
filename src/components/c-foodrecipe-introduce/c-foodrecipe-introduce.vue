@@ -1,7 +1,7 @@
 <template>
     <cheader :header-name='foodRecipe.name' right-con='回到首页' path='/index'></cheader>
     <div class="c-foodrecipe-introduce">
-        <div class="pic" :style="{backgroundImage:'url(/images/'+foodRecipe.image_hash+'.jpg)'}"></div>
+        <div class="pic bg-box" v-lazyload:background-image="'/images/'+foodRecipe.image_hash+'.jpg'"></div>
         <p class="food-name">{{foodRecipe.name}}</p>
         <div class="tags-con">
             <span class="tag" v-for="item in foodRecipe.tags">{{item}}</span>
@@ -24,11 +24,12 @@
             <ul>
                 <li v-for='step in foodRecipe.procedure'>
                     <p class='step-desc' v-if="step.indexOf('.jpg')<0">{{step}}</p>
-                    <div class='step-pic bg-box' v-if="step.indexOf('.jpg')>0" v-lazy:background-image="'/images/'+step"></div>
+                    <div class='step-pic bg-box' v-if="step.indexOf('.jpg')>0" v-lazyload:background-image="'/images/'+step"></div>
                 </li>
             </ul>
         </div>
     </div>
+    <cfooddetailfooter type='recipe' :hash='$route.params.hash'></cfooddetailfooter>
 </template>
 <script>
     import './c-foodrecipe-introduce.scss';
@@ -37,7 +38,7 @@
             return {
                 foodRecipe: {
                     id: null,
-                    image_hash: null,
+                    image_hash: '7249cf589411c2a789ef8e726419c8c6',
                     name: null,
                     tags: null,
                     method: null,

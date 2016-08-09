@@ -4,7 +4,7 @@
         <div class="hot-foodmaterial-con">
             <ul>
                 <li class="hot-foodmaterial-item" v-for='item in hotFoodMaterialList' v-link="'/foodmaterial/'+item.hash">
-                    <div class="hot-foodmaterial-item-pic bg-box" v-lazy:background-image="'/images/'+item.image_hash+'.jpg'" data-hash={{item.hash}}></div>
+                    <div class="hot-foodmaterial-item-pic bg-box" v-lazyload:background-image="'/images/'+item.image_hash+'.jpg'" data-hash={{item.hash}}></div>
                     <div class="hot-foodmaterial-item-info">
                         <p class="hot-foodmaterial-item-title">{{item.name}}</p>
                     </div>

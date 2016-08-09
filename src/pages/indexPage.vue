@@ -2,7 +2,7 @@
     <cnavbar></cnavbar>
     <crecomandswiper></crecomandswiper>
     <chotfood></chotfood>
-    <!-- <cnews></cnews> -->
+    <cnews></cnews>
     <callmenus></callmenus>
     <chotfoodmaterial></chotfoodmaterial>
 </template>

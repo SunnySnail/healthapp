@@ -1,8 +1,10 @@
 import '../html/index.html'
 
 import Vue from 'vue'
-
 import VueRouter from 'vue-router'
+import VueTouch from 'vue-touch'
+import VueAnimatedList from 'vue-animated-list'
+
 import indexPage from '../pages/indexPage.vue'
 import searchPage from '../pages/searchPage.vue'
 import foodRecipePage from '../pages/foodeRecipePage.vue'
@@ -10,12 +12,16 @@ import foodMaterialPage from '../pages/foodMaterialPage.vue'
 import loginPage from '../pages/loginPage.vue'
 import registerPage from '../pages/registerPage.vue'
 import userInfoPage from '../pages/userInfoPage.vue'
+import myCollectPage from '../pages/myCollectPage.vue'
 
 Vue.use(VueRouter);
+Vue.use(VueTouch);
+Vue.use(VueAnimatedList)
+
 Vue.config.debug = true;
 var App = Vue.extend({});
 
-var router = new VueRouter();
+window.router = new VueRouter();
 router.map({
     '/index':{
         component: indexPage
@@ -37,6 +43,9 @@ router.map({
     },
     '/user': {
         component: userInfoPage
+    },
+    '/mycollect': {
+        component: myCollectPage
     },
     '*': {
         component: indexPage

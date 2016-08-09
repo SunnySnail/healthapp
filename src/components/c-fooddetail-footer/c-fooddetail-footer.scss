@@ -1,0 +1,72 @@
+@import '../../sass/_common.scss';
+@mixin backgroundImage($img){
+    background: url($img) no-repeat center center;
+    background-size: auto 100%;
+    width: 100%;
+    padding-top: 60%;
+    display: block;
+}
+@mixin list($right){
+    @include verticalMiddle();
+    right: $right;
+    width: 10%;
+    text-align: center;
+    font-size: 1.2rem;
+}
+.c-fooddetail-footer{
+    width: 100%;
+    padding-top: 12%;
+    position: fixed;
+    bottom: 0;
+    z-index: 4;
+    background-color: #fff;
+    border-top: 1px solid $base-border;
+    .footer-con{
+        width: 100%;
+        @include middle();
+    }
+    .left{
+        margin-left: 2%;
+        border: 1px solid #f0f0f0;
+        background-color: $base-bg;
+        width: 30%;
+        padding:2%;
+        @include border-radius(20px);
+        color: $base-font;
+    }
+    .love{
+        @include list(50%);
+        .love-icon{
+            @include backgroundImage('./images/love.png');
+        }
+        .loved-icon{
+            @include backgroundImage('./images/loved.png');
+        }
+    }
+    .collect{
+        @include list(38%);
+        .collect-icon{
+            @include backgroundImage('./images/collect.png');
+            padding-top: 70%;
+        }
+        .collected-icon{
+            @include backgroundImage('./images/collected.png');
+            padding-top: 70%;
+        }
+    }
+    .zan{
+        @include list(26%);
+        .zan-icon{
+            @include backgroundImage('./images/zan.png');
+            background-size: 100% auto;
+            width: 80%;
+            margin: 0 auto;
+        }
+        .zaned-icon{
+            @include backgroundImage('./images/zaned.png');
+            background-size: 100% auto;
+            width: 80%;
+            margin: 0 auto;
+        }
+    }
+}

@@ -1,0 +1,3 @@
+<template>
+    <cmycollect></cmycollect>
+</template>

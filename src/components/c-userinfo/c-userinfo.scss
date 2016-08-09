@@ -1,0 +1,46 @@
+@import '../../sass/_common.scss';
+.c-userinfo{
+    width: 100%;
+    .userintroduce-part{
+        position: relative;
+        padding-bottom: 15%;
+        border-bottom: 1px solid $base-border;
+        .usericon{
+            background-repeat: no-repeat;
+            width: 15%;
+            padding-top: 15%;
+            background-size: 100% auto;
+            @include border-radius(50%);
+            margin: 2% auto;
+        }
+        p{
+            text-align: center;
+        }
+        .username{
+            text-align: center;
+            font-size: 1.6rem;
+        }
+        .usersign{
+            font-size: 1.4rem;
+            color: $base-font;
+            margin: 3% 0;
+        }
+    }
+    .list{
+        padding: 5% 2%;
+        border-bottom: 1px solid $base-border;
+        font-size: 1.4rem;
+        color: $base;
+        position: relative;
+        &:after{
+            content: '';
+            @include verticalMiddle();
+            background: url(./images/arrow.png) no-repeat center center;
+            background-size: auto 100%;
+            width: 5%;
+            padding-top: 5%;
+            right: 0;
+            padding-right: 2%;
+        }
+    }
+}

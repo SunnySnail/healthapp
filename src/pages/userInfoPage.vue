@@ -1,3 +1,3 @@
 <template>
-    <cuser></cuser>
+    <cuserinfo></cuserinfo>
 </template>

@@ -4,7 +4,7 @@
         <div class="all-menus-pic">
             <ul>
                 <li class="menu-item" v-for='item in menusList'>
-                    <div class="menu-item-pic bg-box" v-lazy:background-image="item.image"></div>
+                    <div class="menu-item-pic bg-box" v-lazyload:background-image="item.image"></div>
                     <div class="menu-item-info">
                         <p class="menu-item-title">{{item.title}}</p>
                         <p class="menu-item-desc">{{item.desc}}</p>

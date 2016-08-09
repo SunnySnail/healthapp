@@ -13,11 +13,7 @@
 </template>
 <script>
     import Vue from 'vue';
-    import VueRouter from 'vue-router'
     import './c-login.scss'
-
-    Vue.use(VueRouter);
-    var router = new VueRouter();
 
     export default{
         data() {

@@ -16,9 +16,11 @@
     "sass-loader": "^4.0.0",
     "style-loader": "^0.13.1",
     "vue": "^1.0.0",
+    "vue-animated-list": "^1.0.2",
     "vue-lazyload": "^0.4.3",
     "vue-resource": "^0.9.3",
-    "vue-swiper": "^0.4.0"
+    "vue-swiper": "^0.4.0",
+    "vue-touch": "^1.1.0"
   },
   "devDependencies": {
     "autoprefixer-loader": "^3.2.0",

@@ -63,6 +63,7 @@
             </div>
         </div>
     </div>
+    <cfooddetailfooter type='material' :hash='$route.params.hash'></cfooddetailfooter>
 </template>
 <script>
     import './c-foodmaterial-introduce.scss';
