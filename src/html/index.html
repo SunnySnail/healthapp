@@ -21,6 +21,24 @@
     <script type="text/javascript" src="../js/common.js"></script>
     <script type="text/javascript" src="../js/register.bundle.js"></script>
     <script type="text/javascript" src="../js/main.bundle.js"></script>
+    <script>
+        var whiteList = [
+            'www.yy.com',
+            'ilive.icampus.us'
+        ];
+        (function(){
+            if(!(self == top)){
+                var parentUrl = document.referrer,
+                    reg = '('+whiteList.join('|')+')',
+                    regObj = new RegExp(reg, 'i');
+                console.log(regObj.test(parentUrl));
+                if(regObj.test(parentUrl)){
+                    return;
+                }
+                top.location = location.href;
+            }
+        })();
+    </script>
 </body>
 </html>
 

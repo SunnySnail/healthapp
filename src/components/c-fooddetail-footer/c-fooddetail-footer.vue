@@ -35,22 +35,34 @@
                 Vue.http.options.emulateHTTP = true;
                 var ele = $('.'+className);
                     if(!ele.hasClass(classedName)){
-                    this.$http.post(url,{
-                       recipe_hash: this.hash
-                    }).then((response)=>{
-                        if(response.data.status){
-                            ele.addClass(classedName);
-                        }
-                    }, (response)=>{
-                    })
+                    if(this.type == 'recipe'){
+                        this.$http.post(url,{
+                           recipe_hash: this.hash
+                        }).then((response)=>{
+                            if(response.data.status){
+                                ele.addClass(classedName);
+                            }
+                        }, (response)=>{
+                        })
+                    }else if(this.type == 'material'){
+                        this.$http.post(url,{
+                           material_hash: this.hash
+                        }).then((response)=>{
+                            if(response.data.status){
+                                ele.addClass(classedName);
+                            }
+                        }, (response)=>{
+                        })
+                    }
                 }else{
                     // var data = {recipe_hash: this.hash};
+                    // console.log(data);
                     // this.$http.delete(url,data).then((response)=>{
                     //     if(response.data.status){
                     //         ele.removeClass(classedName);
                     //     }
                     // }, (response)=>{})
-                    return;
+                    // return;
                 }
             },
             like: function(){
@@ -59,7 +71,11 @@
             },
             collect: function(){
                 this.checkLogin();
-                this.toggle('/api/user/like/food_recipe', 'collect-icon','collected-icon');
+                if(this.type == 'recipe'){
+                    this.toggle('/api/user/like/food_recipe', 'collect-icon','collected-icon');
+                }else if(this.type == 'material'){
+                    this.toggle('/api/user/like/food_material', 'collect-icon', 'collected-icon');
+                }
             },
             zan: function(){
                 this.checkLogin();
