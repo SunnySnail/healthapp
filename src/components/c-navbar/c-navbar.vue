@@ -1,7 +1,7 @@
 <template>
     <div id="navbar" class="c-navbar">
         <div class="navbar-con">
-            <div class="nav-menu"></div>
+            <div class="nav-menu" v-on:click='showSidebar'></div>
             <div class="nav-search">
                 <span class="icon-search"></span>
                 <a v-link="{ path: '/search' }">
@@ -19,20 +19,33 @@ import "./c-navbar.scss";
 export default {
   data() {
     return {
+      sidebarShow: false,
       username: null,
       status: false,
       iconHeader: 'http://img4.imgtn.bdimg.com/it/u=331635439,506004189&fm=21&gp=0.jpg'
     }
   },
+  methods: {
+    showSidebar: function(){
+      this.sidebarShow = true;
+      this.$dispatch('navbar', this.sidebarShow);
+      this.sidebarShow = false;
+    }
+  },
   ready() {
-    this.$http.get('/api/user').then((response)=>{
-      this.status = response.data.status;
-      if(this.status){
-        this.username = response.data.data.username;
-      }else{
-        return;
-      }
-    },(response)=>{
+    var vm = this;
+    $.ajax({
+        url: '/api/user',
+        type: 'get',
+        dataType: 'json'
+    })
+    .done(function(response){
+        vm.status = response.status;
+        if(vm.status){
+            vm.username = response.data.username;
+        }else{
+            return;
+        }
     })
   }
 }

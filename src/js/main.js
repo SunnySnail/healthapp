@@ -13,6 +13,7 @@ import loginPage from '../pages/loginPage.vue'
 import registerPage from '../pages/registerPage.vue'
 import userInfoPage from '../pages/userInfoPage.vue'
 import myCollectPage from '../pages/myCollectPage.vue'
+import myInfoPage from '../pages/myInfoPage.vue'
 
 Vue.use(VueRouter);
 Vue.use(VueTouch);
@@ -46,6 +47,9 @@ router.map({
     },
     '/mycollect': {
         component: myCollectPage
+    },
+    'myinfo': {
+        component: myInfoPage
     },
     '*': {
         component: indexPage

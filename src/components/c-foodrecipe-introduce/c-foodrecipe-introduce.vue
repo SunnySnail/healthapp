@@ -1,7 +1,7 @@
 <template>
     <cheader :header-name='foodRecipe.name' right-con='回到首页' path='/index'></cheader>
     <div class="c-foodrecipe-introduce">
-        <div class="pic bg-box" v-lazyload:background-image="'/images/'+foodRecipe.image_hash+'.jpg'"></div>
+        <div class="pic bg-box" v-lazyload:background-image="hostname+'/pictures/'+foodRecipe.image_hash+'.jpg'"></div>
         <p class="food-name">{{foodRecipe.name}}</p>
         <div class="tags-con">
             <span class="tag" v-for="item in foodRecipe.tags">{{item}}</span>
@@ -24,7 +24,7 @@
             <ul>
                 <li v-for='step in foodRecipe.procedure'>
                     <p class='step-desc' v-if="step.indexOf('.jpg')<0">{{step}}</p>
-                    <div class='step-pic bg-box' v-if="step.indexOf('.jpg')>0" v-lazyload:background-image="'/images/'+step"></div>
+                    <div class='step-pic bg-box' v-if="step.indexOf('.jpg')>0" v-lazyload:background-image="hostname+'/pictures/'+step"></div>
                 </li>
             </ul>
         </div>
@@ -36,9 +36,10 @@
     export default {
         data(){
             return {
+                hostname: 'http://cdn.ilive.icampus.us',
                 foodRecipe: {
                     id: null,
-                    image_hash: '7249cf589411c2a789ef8e726419c8c6',
+                    image_hash: '',
                     name: null,
                     tags: null,
                     method: null,
@@ -53,20 +54,17 @@
             }
         },
         created(){
-            var hash = this.$route.params.hash;
-            this.$http.get('/api/food_recipe/'+hash,{
-                before(request){
-                    if(this.previousRequest) {
-                        this.previousRequest.abort();
-                    }
-                }
-            }).then((response)=>{
-                var data  = response.data;
-                this.foodRecipe = data.data;
-                this.foodRecipe.tags = this.foodRecipe.tags.split(",");
-                this.foodRecipe.procedure = this.foodRecipe.procedure.split("\n");
-            }, (response)=>{
-                alert("error");
+            var vm = this,
+                hash = vm.$route.params.hash;
+            $.ajax({
+                url: '/api/food_recipe/'+hash,
+                type: 'get',
+                dataType: 'json'
+            })
+            .done(function(response){
+                vm.foodRecipe = response.data;
+                vm.foodRecipe.tags = vm.foodRecipe.tags.split(",");
+                vm.foodRecipe.procedure = vm.foodRecipe.procedure.split("\n");
             })
         }
     }

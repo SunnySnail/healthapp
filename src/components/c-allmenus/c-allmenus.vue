@@ -51,20 +51,23 @@ export default {
         }
     },
     created() {
-        var page = Math.ceil(Math.random()*100);
-        this.$http.get('/api/category/food_recipe').then((response)=>{
-            var data  = response.data,
-                _catalogueList = data.data,
+        var page = Math.ceil(Math.random()*100),
+            vm = this;
+        $.ajax({
+            url: '/api/category/food_recipe',
+            type: 'get',
+            dataType: 'json'
+        })
+        .done(function(response){
+            var _catalogueList = response.data,
                 j = 0;
             for(var i in _catalogueList){
                 j++;
                 if(j > 12){
                     return;
                 }
-                this.catalogueList.push(i);
+                vm.catalogueList.push(i);
             }
-        }, (response)=>{
-            alert("error");
         })
     }
 }

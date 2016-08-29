@@ -4,7 +4,7 @@
         <div class="hot-foodmaterial-con">
             <ul>
                 <li class="hot-foodmaterial-item" v-for='item in hotFoodMaterialList' v-link="'/foodmaterial/'+item.hash">
-                    <div class="hot-foodmaterial-item-pic bg-box" v-lazyload:background-image="'/images/'+item.image_hash+'.jpg'" data-hash={{item.hash}}></div>
+                    <div class="hot-foodmaterial-item-pic bg-box" v-lazyload:background-image="hostname+'/pictures/'+item.image_hash+'.jpg'" data-hash={{item.hash}}></div>
                     <div class="hot-foodmaterial-item-info">
                         <p class="hot-foodmaterial-item-title">{{item.name}}</p>
                     </div>
@@ -20,17 +20,30 @@ import "./c-hot-foodmaterial.scss";
 export default {
     data() {
         return {
+            hostname: 'http://cdn.ilive.icampus.us',
             hotFoodMaterialList:null,
             catalogueList:[]
         }
     },
     created() {
-        var page = Math.ceil(Math.random()*200);
-        this.$http.get('/api/food_material?page='+page).then((response)=>{
-            var data  = response.data;
-            this.hotFoodMaterialList = data.data;
-        }, (response)=>{
-            alert("error");
+        var page,
+            vm = this;
+        if(window.sessionStorage.page){
+            page = window.sessionStorage.page;
+        }else{
+            page = Math.ceil(Math.random()*200);
+            window.sessionStorage.setItem("page",page);
+        }
+        $.ajax({
+            url: '/api/food_material',
+            type: 'get',
+            dataType: 'json',
+            data: {
+                page: page
+            }
+        })
+        .done(function(response){
+            vm.hotFoodMaterialList = response.data;
         })
     }
 }

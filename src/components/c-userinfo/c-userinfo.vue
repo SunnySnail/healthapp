@@ -9,7 +9,7 @@
         <div class="list userlove-part" v-link="{path: '/mycollect'}">
             <p>我的收藏</p>
         </div>
-        <div class="list userdetail-part">
+        <div class="list userdetail-part" v-link="{path: '/myinfo'}">
             <p>我的资料</p>
         </div>
         <div class="list usertags-part">

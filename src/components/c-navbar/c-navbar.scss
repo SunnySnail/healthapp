@@ -8,7 +8,8 @@ $base-bg: #fff;
     padding-top: 12%;
     background-color: $base-bg;
     border-bottom: 1px solid $base-border;
-    position: relative;
+    position: fixed;
+    z-index:1;
     .navbar-con{
         width: 100%;
         height: 100%;

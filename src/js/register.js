@@ -20,6 +20,8 @@ import Clogin from '../components/c-login/c-login.vue'
 import Cregister from '../components/c-register/c-register.vue'
 import CuserInfo from '../components/c-userinfo/c-userinfo.vue'
 import CmyCollect from '../components/c-my-collect/c-my-collect.vue'
+import CmyInfo from '../components/c-my-info/c-my-info.vue'
+import CsidebarMenu from '../components/c-sidebar-menu/c-sidebar-menu.vue'
 
 Vue.use(vueResource);
 Vue.use(VueImageLazyload, {
@@ -44,3 +46,5 @@ Vue.component('cregister', Cregister);
 Vue.component('cuserinfo', CuserInfo);
 Vue.component('cfooddetailfooter', CfoodDetailFooter);
 Vue.component('cmycollect', CmyCollect);
+Vue.component('cmyinfo', CmyInfo);
+Vue.component('csidebarmenu', CsidebarMenu);

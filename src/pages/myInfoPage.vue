@@ -1,0 +1,3 @@
+<template>
+    <cmyinfo></cmyinfo>
+</template>

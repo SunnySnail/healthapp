@@ -1,7 +1,7 @@
 <template>
     <cheader :header-name='foodMaterial.name' right-con='回到首页' path='/index'></cheader>
     <div class="c-foodmaterial-introduce">
-        <div class="pic" :style="{backgroundImage:'url(/images/'+foodMaterial.image_hash+'.jpg)'}"></div>
+        <div class="pic" :style="{backgroundImage:'url('+hostname+'/pictures/'+foodMaterial.image_hash+'.jpg)'}"></div>
         <p class="food-name">{{foodMaterial.name}}</p>
         <div class="tags-con">
             <span class="tag" v-for="item in foodMaterial.tags">{{item}}</span>
@@ -70,6 +70,7 @@
     export default {
         data(){
             return {
+                hostname: 'http://cdn.ilive.icampus.us',
                 foodMaterial: {
                     id: null,
                     image_hash: null,
@@ -92,29 +93,26 @@
             }
         },
         created(){
-            var hash = this.$route.params.hash;
+            var vm = this,
+                hash = vm.$route.params.hash;
             function splitData(data){
                 var newData = data.split('\n');
                 return newData;
             }
-            this.$http.get('/api/food_material/'+hash,{
-                before(request){
-                    if(this.previousRequest) {
-                        this.previousRequest.abort();
-                    }
+            $.ajax({
+                url: '/api/food_material/'+hash,
+                type: 'get',
+                dataType: 'json'
+            })
+            .done(function(response){
+                vm.foodMaterial = response.data;
+                vm.foodMaterial.tags = vm.foodMaterial.tags.split(',').slice(0,4);
+                if(vm.foodMaterial.brief){
+                    vm.foodMaterial.brief = splitData(vm.foodMaterial.brief);
                 }
-            }).then((response)=>{
-                var data  = response.data;
-                this.foodMaterial = data.data;
-                this.foodMaterial.tags = this.foodMaterial.tags.split(',').slice(0,4);
-                if(this.foodMaterial.brief){
-                    this.foodMaterial.brief = splitData(this.foodMaterial.brief);
+                if(vm.foodMaterial.nutrient){
+                    vm.foodMaterial.nutrient = splitData(vm.foodMaterial.nutrient);
                 }
-                if(this.foodMaterial.nutrient){
-                    this.foodMaterial.nutrient = splitData(this.foodMaterial.nutrient);
-                }
-            }, (response)=>{
-                alert("error");
             })
         }
     }

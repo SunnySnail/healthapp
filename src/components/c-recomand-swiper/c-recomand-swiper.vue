@@ -25,19 +25,16 @@ export default {
         }
     },
     created() {
-        this.$http.get('/api/hot/food_recipe').then((response)=>{
-            var data  = response.data;
-            this.foodList = data.data;
-            this.num = this.foodList.length;
-        }, (response)=>{
-            alert("error");
+        var vm = this;
+        $.ajax({
+            url: '/api/hot/food_recipe',
+            type: 'get',
+            dataType: 'json'
+        })
+        .done(function(response){
+            vm.foodList = response.data;
+            vm.num = vm.foodList.length;
         })
     }
 }
 </script>
-
-<style>
-body {
-  font-family: Helvetica, sans-serif;
-}
-</style>

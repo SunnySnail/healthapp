@@ -59,35 +59,47 @@ export default {
             }
         },
         getRecipeData: function(page){
-            this.$http.get('/api/user/like/food_recipe?page='+page).then(
-            (response)=>{
-                var data  = response.data.data;
+            var vm = this;
+            $.ajax({
+                url: '/api/user/like/food_recipe',
+                type: 'get',
+                dataType: 'json',
+                data: {
+                    page: page
+                }
+            })
+            .done(function(response){
+                var data  = response.data;
                 if(data.length > 0){
                     var len = data.length;
                     for(var i=0; i<len; i++){
-                        this.foodList.push(data[i]);
+                        vm.foodList.push(data[i]);
                     }
-                    this.recipePage++;
-                    this.recipeLock = 1;
+                    vm.recipePage++;
+                    vm.recipeLock = 1;
                 }
-            }, (response)=>{
-                alert("error");
             })
         },
         getMaterialData: function(page){
-            this.$http.get('/api/user/like/food_material?page='+page).then(
-            (response)=>{
-                var data  = response.data.data;
+            var vm = this;
+            $.ajax({
+                url: '/api/user/like/food_material',
+                type: 'get',
+                dataType: 'json',
+                data: {
+                    page: page
+                }
+            })
+            .done(function(response){
+                var data  = response.data;
                 if(data.length > 0){
                     var len = data.length;
                     for(var i=0; i<len; i++){
-                        this.foodMaterialList.push(data[i]);
+                        vm.foodMaterialList.push(data[i]);
                     }
-                    this.materialPage++;
-                    this.materialLock = 1;
+                    vm.materialPage++;
+                    vm.materialLock = 1;
                 }
-            }, (response)=>{
-                alert("error");
             })
         }
     },

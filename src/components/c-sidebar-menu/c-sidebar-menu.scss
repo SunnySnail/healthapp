@@ -1,0 +1,51 @@
+@import '../../sass/_common.scss';
+.c-sidebar-menu{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 200px;
+    z-index: 3;
+    .menu{
+        background-color: #fff;
+        width: 100%;
+        height: 100%;
+    }
+    &.hide{
+        @include transform(translateX(-200px));
+        @include transition(transform 0.3s ease-out);
+    }
+    &.show{
+        @include transform(translateX(0));
+        @include transition(transform 0.3s ease-out);
+    }
+    .back{
+        background-color: red;
+        color: #fff;
+    }
+    .menu-item{
+        text-align: center;
+        @include box-sizing();
+        width: 90%;
+        padding: 12% 0;
+        margin: 0 auto;
+        border-bottom: 1px solid $base-border;
+    }
+    .menu-login{
+        background: url(./images/arrow-login.png) no-repeat 45px center;
+        background-size: 20px;
+        font-size: 1.6rem;
+    }
+}
+.page-cover{
+    position: fixed;
+    background-color: rgba(0,0,0,0.5);
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: none;
+    &.show{
+        z-index: 2;
+        display: block;
+    }
+}
